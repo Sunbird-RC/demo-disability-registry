@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "Disability": {
+      "$ref": "#/definitions/Disability"
+    }
+  },
+  "required": [
+    "Disability"
+  ],
+  "title":"Disability",
+  "definitions": {
+    "Disability": {
+      "$id": "#/properties/Disability",
+      "type": "object",
+      "title": "The Disability Schema",
+      "required": [
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Full Name"
+        },
+        "mobile": {
+          "type": "string",
+          "pattern": "^[6-9]\\d{9}$",
+          "title": "Mobile Number"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "title": "Email ID"
+        },
+        "udid": {
+          "type": "string",
+          "title": "Unique Disability ID"
+        },
+        "bloodGroup": {
+          "type": "string",
+          "enum": ["A+","A-","B+","B-","AB+","AB-","O+","O-"],
+          "title": "Blood Group"
+        },
+        "addressLine1": {
+          "type": "string",
+          "title": "Address Line 1"
+        },
+        "addressLine2": {
+          "type": "string",
+          "title": "Address Line 2"
+        },
+        "country": {
+          "type": "string",
+          "title": "Country"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Andaman and Nicobar Islands",
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Assam",
+            "Bihar",
+            "Chandigarh",
+            "Chhattisgarh",
+            "Dadra and Nagar Haveli",
+            "Daman and Diu",
+            "Delhi",
+            "Goa",
+            "Gujarat",
+            "Haryana",
+            "Himachal Pradesh",
+            "Jammu and Kashmir",
+            "Jharkhand",
+            "Karnataka",
+            "Kerala",
+            "Ladakh",
+            "Lakshadweep",
+            "Madhya Pradesh",
+            "Maharashtra",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Odisha",
+            "Puducherry",
+            "Punjab",
+            "Rajasthan",
+            "Sikkim",
+            "Tamil Nadu",
+            "Telangana",
+            "Tripura",
+            "Uttar Pradesh",
+            "Uttarakhand",
+            "West Bengal"
+          ],
+          "title": "State"
+        },
+        "district": {
+          "type": "string",
+          "title": "District"
+        },
+        "pincode": {
+          "type": "string",
+          "title": "Pincode"
+        },
+        "disabilityType": {
+          "type": "string",
+          "enum": [
+            "Blindness",
+            "Muscular Dystrophy",
+            "Hearing Impairment  Hemophilia",
+            "Low Vision",
+            "Parkinson's Disease  Intellectual Disability Thalassemia",
+            "Leprosy Cured",
+            "Sickle Cell Disease",
+            "Acid Attack Victim  Locomotor Disability  Cerebral Palsy",
+            "Dwarfism",
+            "Mental Illness",
+            "Multiple Sclerosis",
+            "Chronic Neurological Conditions",
+            "Specific Learning  Disabilities",
+            "Autism Spectrum Disorder",
+            "Speech and Language Disability",
+            "Multiple Disabilities including Deaf Blindness"
+          ]
+        },
+        "disabilityPercentage": {
+          "type": "number"
+        },
+        "guardianName": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "_osConfig": {
+    "privateFields": [],
+    "indexFields": [],
+    "uniqueIndexFields": [],
+    "systemFields": [
+      "osCreatedAt",
+      "osUpdatedAt",
+      "osCreatedBy",
+      "osUpdatedBy"
+    ],
+    "attestationPolicies": [],
+    "inviteRoles":["anonymous"],
+    "roles":["anonymous"],
+    "ownershipAttributes": [],
+    "credentialTemplate": {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        {
+          "@context": {
+            "@version": 1.1,
+            "@protected": true,
+            "DisabilityCertificate": {
+              "@id": "https://github.com/sunbird-specs/vc-specs#DisabilityCertificate",
+              "@context": {
+                "id": "@id",
+                "@version": 1.1,
+                "@protected": true
+              }
+            },
+            "Disability": {
+              "@id": "https://github.com/sunbird-specs/vc-specs#Donor",
+              "@context": {
+                "name": "schema:Text",
+                "udid": "schema:Text",
+                "disabilityType": "schema:Text",
+                "disabilityPercentage": "schema:Text"
+              }
+            }
+          }
+        }
+      ],
+      "type": [
+        "VerifiableCredential",
+        "DisabilityCertificate"
+      ],
+      "issuer": "https://nha.gov.in",
+      "issuanceDate": "{{osCreatedAt}}",
+      "credentialSubject": {
+        "type": "Disability",
+        "name": "{{name}}",
+        "udid": "{{udid}}",
+        "disabilityType": "{{disabilityType}}",
+        "disabilityPercentage": "{{disabilityPercentage}}"
+      }
+    },
+    "certificateTemplates": {
+      "svg": "https://gist.githubusercontent.com/varadeth/f9bcf38e5ae4b3bb818224e1722b8778/raw/2dce4fe0d17ad948b57df9d9d57141654e0c820a/certificate.svg"
+    }
+  }
+}
